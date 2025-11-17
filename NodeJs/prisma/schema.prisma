@@ -13,17 +13,9 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Post {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  title  String
-  userId String @db.ObjectId
-  user   User   @relation(fields: [userId], references: [id])
-}
-
 model User {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   name  String
   age   String
-  email String
-  posts Post[]
+  email String  @unique
 }
